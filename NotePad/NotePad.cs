@@ -103,5 +103,22 @@ namespace NotePad
         {
             NotePad_FormClosing(null,null);
         }
+
+        private void mfSaveAs_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.DefaultExt = "*.txt";
+            sfd.Filter = "Plain Text Files|*.txt";
+            //sfd.ShowDialog();
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                if (sfd.FileName != "")
+                {
+                    file.filePath = sfd.FileName;
+                    rtbFile.SaveFile(file.filePath, RichTextBoxStreamType.PlainText);
+                    file.modified = false;
+                }
+            }
+        }
     }
 }

@@ -109,6 +109,7 @@
             | System.Windows.Forms.Keys.S)));
             this.mfSaveAs.Size = new System.Drawing.Size(177, 22);
             this.mfSaveAs.Text = "Save As";
+            this.mfSaveAs.Click += new System.EventHandler(this.mfSaveAs_Click);
             // 
             // mfClose
             // 
