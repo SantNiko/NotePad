@@ -52,6 +52,7 @@
     <Compile Include="NotePad.Designer.cs">
       <DependentUpon>NotePad.cs</DependentUpon>
     </Compile>
+    <Compile Include="pocos\myFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="NotePad.resx">

@@ -117,6 +117,7 @@
             this.mfClose.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
             this.mfClose.Size = new System.Drawing.Size(177, 22);
             this.mfClose.Text = "&Close";
+            this.mfClose.Click += new System.EventHandler(this.mfClose_Click);
             // 
             // mEdit
             // 
@@ -218,6 +219,7 @@
             this.rtbFile.Size = new System.Drawing.Size(539, 361);
             this.rtbFile.TabIndex = 1;
             this.rtbFile.Text = "";
+            this.rtbFile.TextChanged += new System.EventHandler(this.rtbFile_TextChanged);
             // 
             // NotePad
             // 
@@ -230,6 +232,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "NotePad";
             this.Text = "NotePad";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NotePad_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
