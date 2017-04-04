@@ -96,7 +96,7 @@ namespace NotePad
                 //preguntar si quiere guardar fichero actual
                 msgSave();
             }
-            Application.Exit();
+           // Application.Exit();
         }
 
         private void mfClose_Click(object sender, EventArgs e)
