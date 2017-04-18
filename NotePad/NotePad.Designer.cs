@@ -46,8 +46,29 @@
             this.msFindReplace = new System.Windows.Forms.ToolStripMenuItem();
             this.mQuestion = new System.Windows.Forms.ToolStripMenuItem();
             this.mqAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.rtbFile = new System.Windows.Forms.RichTextBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolSBNew = new System.Windows.Forms.ToolStripButton();
+            this.toolSBSave = new System.Windows.Forms.ToolStripButton();
+            this.toolSBOpen = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolSBCut = new System.Windows.Forms.ToolStripButton();
+            this.toolSBCopy = new System.Windows.Forms.ToolStripButton();
+            this.toolSBPaste = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolSBUndo = new System.Windows.Forms.ToolStripButton();
+            this.toolSBRedo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolSBFind = new System.Windows.Forms.ToolStripButton();
+            this.tbControl = new System.Windows.Forms.TabControl();
+            this.tabMas = new System.Windows.Forms.TabPage();
+            this.tabPage0 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            this.tbControl.SuspendLayout();
+            this.tabMas.SuspendLayout();
+            this.tabPage0.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -82,7 +103,6 @@
             this.mfNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.mfNew.Size = new System.Drawing.Size(177, 22);
             this.mfNew.Text = "&New";
-            this.mfNew.Click += new System.EventHandler(this.mfNew_Click);
             // 
             // mfOpen
             // 
@@ -91,7 +111,6 @@
             this.mfOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.mfOpen.Size = new System.Drawing.Size(177, 22);
             this.mfOpen.Text = "&Open";
-            this.mfOpen.Click += new System.EventHandler(this.mfOpen_Click);
             // 
             // mfSave
             // 
@@ -100,7 +119,6 @@
             this.mfSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.mfSave.Size = new System.Drawing.Size(177, 22);
             this.mfSave.Text = "&Save";
-            this.mfSave.Click += new System.EventHandler(this.mfSave_Click);
             // 
             // mfSaveAs
             // 
@@ -212,22 +230,186 @@
             this.mqAbout.Size = new System.Drawing.Size(175, 22);
             this.mqAbout.Text = "&About Notepad";
             // 
-            // rtbFile
+            // toolStrip1
             // 
-            this.rtbFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbFile.Location = new System.Drawing.Point(0, 24);
-            this.rtbFile.Name = "rtbFile";
-            this.rtbFile.Size = new System.Drawing.Size(539, 361);
-            this.rtbFile.TabIndex = 1;
-            this.rtbFile.Text = "";
-            this.rtbFile.TextChanged += new System.EventHandler(this.rtbFile_TextChanged);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolSBNew,
+            this.toolSBSave,
+            this.toolSBOpen,
+            this.toolStripSeparator1,
+            this.toolSBCut,
+            this.toolSBCopy,
+            this.toolSBPaste,
+            this.toolStripSeparator2,
+            this.toolSBUndo,
+            this.toolSBRedo,
+            this.toolStripSeparator3,
+            this.toolSBFind});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(539, 25);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolSBNew
+            // 
+            this.toolSBNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBNew.Image = global::NotePad.Properties.Resources._new;
+            this.toolSBNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBNew.Name = "toolSBNew";
+            this.toolSBNew.Size = new System.Drawing.Size(23, 22);
+            this.toolSBNew.Text = "toolStripButton1";
+            this.toolSBNew.Click += new System.EventHandler(this.nuevo);
+            // 
+            // toolSBSave
+            // 
+            this.toolSBSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBSave.Image = global::NotePad.Properties.Resources.save;
+            this.toolSBSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBSave.Name = "toolSBSave";
+            this.toolSBSave.Size = new System.Drawing.Size(23, 22);
+            this.toolSBSave.Text = "toolStripButton2";
+            this.toolSBSave.Click += new System.EventHandler(this.guardar);
+            // 
+            // toolSBOpen
+            // 
+            this.toolSBOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBOpen.Image = global::NotePad.Properties.Resources.open;
+            this.toolSBOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBOpen.Name = "toolSBOpen";
+            this.toolSBOpen.Size = new System.Drawing.Size(23, 22);
+            this.toolSBOpen.Text = "toolStripButton3";
+            this.toolSBOpen.Click += new System.EventHandler(this.abrir);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolSBCut
+            // 
+            this.toolSBCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBCut.Image = global::NotePad.Properties.Resources.cut;
+            this.toolSBCut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBCut.Name = "toolSBCut";
+            this.toolSBCut.Size = new System.Drawing.Size(23, 22);
+            this.toolSBCut.Text = "toolStripButton4";
+            // 
+            // toolSBCopy
+            // 
+            this.toolSBCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBCopy.Image = global::NotePad.Properties.Resources.copy;
+            this.toolSBCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBCopy.Name = "toolSBCopy";
+            this.toolSBCopy.Size = new System.Drawing.Size(23, 22);
+            this.toolSBCopy.Text = "toolStripButton5";
+            // 
+            // toolSBPaste
+            // 
+            this.toolSBPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBPaste.Image = global::NotePad.Properties.Resources.paste;
+            this.toolSBPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBPaste.Name = "toolSBPaste";
+            this.toolSBPaste.Size = new System.Drawing.Size(23, 22);
+            this.toolSBPaste.Text = "toolStripButton6";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolSBUndo
+            // 
+            this.toolSBUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBUndo.Image = global::NotePad.Properties.Resources.undo;
+            this.toolSBUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBUndo.Name = "toolSBUndo";
+            this.toolSBUndo.Size = new System.Drawing.Size(23, 22);
+            this.toolSBUndo.Text = "toolStripButton7";
+            // 
+            // toolSBRedo
+            // 
+            this.toolSBRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBRedo.Image = global::NotePad.Properties.Resources.Redo;
+            this.toolSBRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBRedo.Name = "toolSBRedo";
+            this.toolSBRedo.Size = new System.Drawing.Size(23, 22);
+            this.toolSBRedo.Text = "toolStripButton8";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolSBFind
+            // 
+            this.toolSBFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBFind.Image = global::NotePad.Properties.Resources.find;
+            this.toolSBFind.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBFind.Name = "toolSBFind";
+            this.toolSBFind.Size = new System.Drawing.Size(23, 22);
+            this.toolSBFind.Text = "toolStripButton9";
+            // 
+            // tbControl
+            // 
+            this.tbControl.Controls.Add(this.tabPage0);
+            this.tbControl.Controls.Add(this.tabMas);
+            this.tbControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbControl.Location = new System.Drawing.Point(0, 49);
+            this.tbControl.Name = "tbControl";
+            this.tbControl.SelectedIndex = 0;
+            this.tbControl.Size = new System.Drawing.Size(539, 336);
+            this.tbControl.TabIndex = 3;
+            this.tbControl.SelectedIndexChanged += new System.EventHandler(this.tbControl_SelectedIndexChanged);
+            // 
+            // tabMas
+            // 
+            this.tabMas.Controls.Add(this.richTextBox1);
+            this.tabMas.Location = new System.Drawing.Point(4, 22);
+            this.tabMas.Name = "tabMas";
+            this.tabMas.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMas.Size = new System.Drawing.Size(531, 310);
+            this.tabMas.TabIndex = 1;
+            this.tabMas.Text = "+";
+            this.tabMas.UseVisualStyleBackColor = true;
+            // 
+            // tabPage0
+            // 
+            this.tabPage0.Controls.Add(this.richTextBox2);
+            this.tabPage0.Location = new System.Drawing.Point(4, 22);
+            this.tabPage0.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPage0.Name = "tabPage0";
+            this.tabPage0.Size = new System.Drawing.Size(531, 310);
+            this.tabPage0.TabIndex = 2;
+            this.tabPage0.Text = "tabPage0";
+            this.tabPage0.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Location = new System.Drawing.Point(3, 3);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(525, 304);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox2.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(0);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(531, 310);
+            this.richTextBox2.TabIndex = 0;
+            this.richTextBox2.Text = "";
             // 
             // NotePad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(539, 385);
-            this.Controls.Add(this.rtbFile);
+            this.Controls.Add(this.tbControl);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -236,6 +418,11 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NotePad_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.tbControl.ResumeLayout(false);
+            this.tabMas.ResumeLayout(false);
+            this.tabPage0.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,7 +448,24 @@
         private System.Windows.Forms.ToolStripMenuItem msFindReplace;
         private System.Windows.Forms.ToolStripMenuItem mQuestion;
         private System.Windows.Forms.ToolStripMenuItem mqAbout;
-        private System.Windows.Forms.RichTextBox rtbFile;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolSBNew;
+        private System.Windows.Forms.ToolStripButton toolSBSave;
+        private System.Windows.Forms.ToolStripButton toolSBOpen;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolSBCut;
+        private System.Windows.Forms.ToolStripButton toolSBCopy;
+        private System.Windows.Forms.ToolStripButton toolSBPaste;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton toolSBUndo;
+        private System.Windows.Forms.ToolStripButton toolSBRedo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton toolSBFind;
+        private System.Windows.Forms.TabControl tbControl;
+        private System.Windows.Forms.TabPage tabMas;
+        private System.Windows.Forms.TabPage tabPage0;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
