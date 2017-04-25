@@ -23,19 +23,25 @@ namespace NotePad
             files.Add(new myFile());
             this.mfNew.Click += new EventHandler(nuevo);
             this.mfOpen.Click += new System.EventHandler(abrir);
-            this.mfSave.Click += new System.EventHandler(guardar);
+            this.mfSave.Click += new System.EventHandler(s);
 
         }
 
-        private void msgSave(String fichero) {
-            if (MessageBox.Show("El fichero "+fichero+" fue modificado, desea modificarlo?", "Guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                guardar(null, null);
+        private bool msgSave(String fichero) {
+            if (MessageBox.Show("El fichero " + fichero + " fue modificado, desea modificarlo?", "Guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                bool b = guardar(null, null);
+                return b;
             }
+            else {
+                return true;
+            }
+            
         }
 
         private void nuevo(object sender, EventArgs e) {
             nuevoBlanco(null, null);
-            files.Add(new myFile());
+            
         }
 
         private void nuevoBlanco(object sender, EventArgs e)
@@ -47,6 +53,7 @@ namespace NotePad
                 rtbN.TextChanged += textChanged; 
                 tbN.Controls.Add(rtbN);
                 tbControl.TabPages.Insert(tbControl.TabPages.Count - 1, tbN);
+                files.Add(new myFile());
                 tbControl.SelectedTab = tbN;
                 nBlank++;
         }
@@ -60,23 +67,36 @@ namespace NotePad
                 if (ofd.FileName != "") {
                     nuevo(null, null);
                     files[tbControl.SelectedIndex].filePath = ofd.FileName;
-                    tbControl.SelectedTab.Text = ofd.FileName;//titulo del tab
+                    tbControl.SelectedTab.Text = files[tbControl.SelectedIndex].fileName;//titulo del tab
                     //MessageBox.Show(file[tbControl.SelectedIndex].filePath); // Aqui compruebo que realmente me está cogiendo al ruta del fichero - BIEN
                     ((RichTextBox)tbControl.SelectedTab.Controls[0]).LoadFile(files[tbControl.SelectedIndex].filePath, RichTextBoxStreamType.PlainText); // bien, abrí un fichero sql y me lo abrió
                     files[tbControl.SelectedIndex].modified = false;
+                    this.Text = "Notepad - " + files[tbControl.SelectedIndex].filePath;
                 }
             }
         }
 
-        private void guardar(object sender, EventArgs e)
+        private void s(object sender, EventArgs e)
+        {
+            guardar(sender, e);
+        }
+
+        private void sAs(object sender, EventArgs e)
+        {
+            mfSaveAs_Click(sender, e);
+        }
+
+        private bool guardar(object sender, EventArgs e)
         {
             if (files[tbControl.SelectedIndex].filePath == "")
             {
-                mfSaveAs_Click(null, null);
+                bool b = mfSaveAs_Click(null, null);
+                return b;
             }
             else {
                 ((RichTextBox)tbControl.SelectedTab.Controls[0]).SaveFile(files[tbControl.SelectedIndex].filePath, RichTextBoxStreamType.PlainText);
                 files[tbControl.SelectedIndex].modified = false;
+                return true;
             }
         }
 
@@ -91,7 +111,12 @@ namespace NotePad
             {
                 if (files[i].modified)
                 {
-                    msgSave(tbControl.TabPages[i].Text);
+                    if (!msgSave(tbControl.TabPages[i].Text))
+                    {
+                        e.Cancel = true;
+                        i = files.Count;
+                    }
+                    
                 }
             }
            // Application.Exit();
@@ -102,7 +127,7 @@ namespace NotePad
             NotePad_FormClosing(null,null);
         }
 
-        private void mfSaveAs_Click(object sender, EventArgs e)
+        private bool mfSaveAs_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.DefaultExt = "*.txt";
@@ -114,23 +139,39 @@ namespace NotePad
                 {
                     files[tbControl.SelectedIndex].filePath = sfd.FileName;
                     ((RichTextBox)tbControl.SelectedTab.Controls[0]).SaveFile(files[tbControl.SelectedIndex].filePath, RichTextBoxStreamType.PlainText);
-                    tbControl.SelectedTab.Text = sfd.FileName;//titulo del tab
+                    tbControl.SelectedTab.Text = files[tbControl.SelectedIndex].fileName;//titulo del tab
                     files[tbControl.SelectedIndex].modified = false;
+                    return true;
                 }
+                return false;
             }
+            return false;
         }
         
 
         private void tbControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tbControl.SelectedTab == tabMas) {
-                nuevo(null,null);
+            if (tbControl.SelectedTab == tabMas)
+            {
+                nuevo(null, null);
             }
+            else {
+                if (files[tbControl.SelectedIndex].filePath != "")
+            {
+                this.Text = "Notepad - " + files[tbControl.SelectedIndex].filePath;
+            }
+            else {
+                this.Text = "Notepad";
+            }
+            }
+            
+            
         }
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
             textChanged(sender,e);
         }
+
     }
 }

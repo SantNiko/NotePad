@@ -30,6 +30,22 @@ namespace NotePad.pocos
             set { mModified = value; }
         }
 
+        public String fileName
+        {
+            get {
+                String filename = "";
+                for (int i = filePath.Length-1; i >=0 ; i--)
+                {
+                    if (filePath[i].Equals('\\'))
+                    {
+                        return filename;
+                    }
+                    filename = filePath[i]+filename;
+                }
+                return filename;
+            }
+        }
+
 
         private String mFilePath;
         private Boolean mModified;

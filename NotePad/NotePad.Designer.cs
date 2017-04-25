@@ -127,7 +127,7 @@
             | System.Windows.Forms.Keys.S)));
             this.mfSaveAs.Size = new System.Drawing.Size(177, 22);
             this.mfSaveAs.Text = "Save As";
-            this.mfSaveAs.Click += new System.EventHandler(this.mfSaveAs_Click);
+            this.mfSaveAs.Click += new System.EventHandler(this.sAs);
             // 
             // mfClose
             // 
@@ -269,7 +269,7 @@
             this.toolSBSave.Name = "toolSBSave";
             this.toolSBSave.Size = new System.Drawing.Size(23, 22);
             this.toolSBSave.Text = "toolStripButton2";
-            this.toolSBSave.Click += new System.EventHandler(this.guardar);
+            this.toolSBSave.Click += new System.EventHandler(this.s);
             // 
             // toolSBOpen
             // 
