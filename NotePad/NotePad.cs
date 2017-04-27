@@ -24,6 +24,7 @@ namespace NotePad
             this.mfNew.Click += new EventHandler(nuevo);
             this.mfOpen.Click += new System.EventHandler(abrir);
             this.mfSave.Click += new System.EventHandler(s);
+            this.msFind.Click += new System.EventHandler(openFind);
 
         }
 
@@ -171,6 +172,26 @@ namespace NotePad
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
             textChanged(sender,e);
+        }
+
+        private void openFind(object sender, EventArgs e) {
+            // Create form to be owned.
+            Form ownedForm = new FindForm();
+            this.AddOwnedForm(ownedForm);
+            // Show the owned form.
+            ownedForm.Show();
+        }
+        private void openReplace(object sender, EventArgs e)
+        {
+            // Create form to be owned.
+            FindForm ownedForm = new FindForm();
+            this.AddOwnedForm(ownedForm);
+            ownedForm.selectTab(ownedForm.C_REPLACE);
+            ownedForm.Show();
+        }
+
+        public RichTextBox getText() {
+            return (RichTextBox)(tbControl.SelectedTab.Controls[0]);
         }
 
     }
