@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NotePad.pocos
 {
-    class myFile
+    public class myFile
     {
 
         public myFile() {

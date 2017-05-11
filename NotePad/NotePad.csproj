@@ -46,6 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicNote.Designer.cs">
+      <DependentUpon>BasicNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FindForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +70,9 @@
     <Compile Include="pocos\myFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BasicNote.resx">
+      <DependentUpon>BasicNote.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FindForm.resx">
       <DependentUpon>FindForm.cs</DependentUpon>
     </EmbeddedResource>

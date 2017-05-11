@@ -14,20 +14,23 @@ namespace NotePad
     public partial class NotePad : Form
     {
         private static int nBlank = 1;
-        private List<myFile> files;
+        public static int CONST_TABPAGES = 0;
+        public static int CONST_WINDOWS = 1;
+
+        private List<myTextBox> textos;
 
         public NotePad()
         {
             InitializeComponent();
-            files = new List<myFile>();
-            files.Add(new myFile());
+            textos.Add(new myTextBox());
+            tbControl.TabPages[0].Controls.Add(textos[0]);
             this.mfNew.Click += new EventHandler(nuevo);
             this.mfOpen.Click += new System.EventHandler(abrir);
             this.mfSave.Click += new System.EventHandler(s);
             this.msFind.Click += new System.EventHandler(openFind);
 
         }
-
+        
         private bool msgSave(String fichero) {
             if (MessageBox.Show("El fichero " + fichero + " fue modificado, desea modificarlo?", "Guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -47,32 +50,22 @@ namespace NotePad
 
         private void nuevoBlanco(object sender, EventArgs e)
         {
-                TabPage tbN = new TabPage("NewTabPage" + nBlank);
-                RichTextBox rtbN = new RichTextBox();
-                rtbN.Name = "file";
-                rtbN.Dock = DockStyle.Fill;
-                rtbN.TextChanged += textChanged; 
-                tbN.Controls.Add(rtbN);
-                tbControl.TabPages.Insert(tbControl.TabPages.Count - 1, tbN);
-                files.Add(new myFile());
-                tbControl.SelectedTab = tbN;
-                nBlank++;
+
+            if (mwTabs.Checked)
+            {
+
+            } else if (mwWindow.Checked){
+
+            }
+
         }
 
         private void abrir(object sender, EventArgs e)
         {
             
             OpenFileDialog ofd = new OpenFileDialog();
-            //ofd.ShowDialog();
             if (ofd.ShowDialog() == DialogResult.OK) {
                 if (ofd.FileName != "") {
-                    nuevo(null, null);
-                    files[tbControl.SelectedIndex].filePath = ofd.FileName;
-                    tbControl.SelectedTab.Text = files[tbControl.SelectedIndex].fileName;//titulo del tab
-                    //MessageBox.Show(file[tbControl.SelectedIndex].filePath); // Aqui compruebo que realmente me está cogiendo al ruta del fichero - BIEN
-                    ((RichTextBox)tbControl.SelectedTab.Controls[0]).LoadFile(files[tbControl.SelectedIndex].filePath, RichTextBoxStreamType.PlainText); // bien, abrí un fichero sql y me lo abrió
-                    files[tbControl.SelectedIndex].modified = false;
-                    this.Text = "Notepad - " + files[tbControl.SelectedIndex].filePath;
                 }
             }
         }
@@ -89,38 +82,17 @@ namespace NotePad
 
         private bool guardar(object sender, EventArgs e)
         {
-            if (files[tbControl.SelectedIndex].filePath == "")
-            {
-                bool b = mfSaveAs_Click(null, null);
-                return b;
-            }
-            else {
-                ((RichTextBox)tbControl.SelectedTab.Controls[0]).SaveFile(files[tbControl.SelectedIndex].filePath, RichTextBoxStreamType.PlainText);
-                files[tbControl.SelectedIndex].modified = false;
-                return true;
-            }
+            return false;
         }
 
         private void textChanged(object sender, EventArgs e)
         {
-            files[tbControl.SelectedIndex].modified = true;
+            
         }
 
         private void NotePad_FormClosing(object sender, FormClosingEventArgs e)
         {
-            for (int i = 0; i < files.Count; i++)
-            {
-                if (files[i].modified)
-                {
-                    if (!msgSave(tbControl.TabPages[i].Text))
-                    {
-                        e.Cancel = true;
-                        i = files.Count;
-                    }
-                    
-                }
-            }
-           // Application.Exit();
+            
         }
 
         private void mfClose_Click(object sender, EventArgs e)
@@ -133,15 +105,10 @@ namespace NotePad
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.DefaultExt = "*.txt";
             sfd.Filter = "Plain Text Files|*.txt";
-            //sfd.ShowDialog();
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 if (sfd.FileName != "")
                 {
-                    files[tbControl.SelectedIndex].filePath = sfd.FileName;
-                    ((RichTextBox)tbControl.SelectedTab.Controls[0]).SaveFile(files[tbControl.SelectedIndex].filePath, RichTextBoxStreamType.PlainText);
-                    tbControl.SelectedTab.Text = files[tbControl.SelectedIndex].fileName;//titulo del tab
-                    files[tbControl.SelectedIndex].modified = false;
                     return true;
                 }
                 return false;
@@ -152,21 +119,19 @@ namespace NotePad
 
         private void tbControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tbControl.SelectedTab == tabMas)
-            {
-                nuevo(null, null);
-            }
-            else {
-                if (files[tbControl.SelectedIndex].filePath != "")
-            {
-                this.Text = "Notepad - " + files[tbControl.SelectedIndex].filePath;
-            }
-            else {
-                this.Text = "Notepad";
-            }
-            }
-            
-            
+            //if (tbControl.SelectedTab == tabMas)
+            //{
+            //    nuevo(null, null);
+            //}
+            //else {
+            //    if (files[tbControl.SelectedIndex].filePath != "")
+            //{
+            //    this.Text = "Notepad - " + files[tbControl.SelectedIndex].filePath;
+            //}
+            //else {
+            //    this.Text = "Notepad";
+            //}
+            //}
         }
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
@@ -190,9 +155,40 @@ namespace NotePad
             ownedForm.Show();
         }
 
-        public RichTextBox getText() {
-            return (RichTextBox)(tbControl.SelectedTab.Controls[0]);
+        public myTextBox getText() {
+            return (myTextBox)(tbControl.SelectedTab.Controls[0]);
         }
 
+        private void windowsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tbControl.Dispose();
+            foreach (var item in tbControl.TabPages)
+            {
+                
+                myTextBox mtb = (myTextBox)(((TabPage)item).Controls[0]);
+                BasicNote newMDIChild = new BasicNote(mtb.file);
+                // Set the Parent Form of the Child window.  
+                newMDIChild.MdiParent = this;
+                // Display the new form.  
+                newMDIChild.Show();
+            }
+            nBlank = 0;
+        }
+
+        private void tagPagesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tbControl = new TabControl();
+            tbControl.Dock = DockStyle.Fill;
+
+            foreach (var item in this.MdiChildren)
+            {
+                TabPage tbN = new TabPage("NewTabPage" + nBlank);
+                myTextBox mtb = ((myTextBox)((BasicNote)item).Controls[0]);
+                tbN.Controls.Add(mtb);
+                tbControl.TabPages.Insert(tbControl.TabPages.Count - 1, tbN);
+
+            }
+            tbControl.Visible = true;
+        }
     }
 }

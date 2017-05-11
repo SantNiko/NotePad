@@ -30,40 +30,43 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.mfNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.mfOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.mfSave = new System.Windows.Forms.ToolStripMenuItem();
             this.mfSaveAs = new System.Windows.Forms.ToolStripMenuItem();
-            this.mfClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.meCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.mePaste = new System.Windows.Forms.ToolStripMenuItem();
-            this.meCut = new System.Windows.Forms.ToolStripMenuItem();
-            this.meRedo = new System.Windows.Forms.ToolStripMenuItem();
-            this.meUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.mSearch = new System.Windows.Forms.ToolStripMenuItem();
-            this.msFind = new System.Windows.Forms.ToolStripMenuItem();
-            this.msFindReplace = new System.Windows.Forms.ToolStripMenuItem();
             this.mQuestion = new System.Windows.Forms.ToolStripMenuItem();
             this.mqAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolSBNew = new System.Windows.Forms.ToolStripButton();
-            this.toolSBSave = new System.Windows.Forms.ToolStripButton();
-            this.toolSBOpen = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolSBCut = new System.Windows.Forms.ToolStripButton();
-            this.toolSBCopy = new System.Windows.Forms.ToolStripButton();
-            this.toolSBPaste = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolSBUndo = new System.Windows.Forms.ToolStripButton();
-            this.toolSBRedo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolSBFind = new System.Windows.Forms.ToolStripButton();
             this.tbControl = new System.Windows.Forms.TabControl();
             this.tabPage0 = new System.Windows.Forms.TabPage();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.tabMas = new System.Windows.Forms.TabPage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.mWindow = new System.Windows.Forms.ToolStripMenuItem();
+            this.mwWindow = new System.Windows.Forms.ToolStripMenuItem();
+            this.mwTabs = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolSBNew = new System.Windows.Forms.ToolStripButton();
+            this.toolSBSave = new System.Windows.Forms.ToolStripButton();
+            this.toolSBOpen = new System.Windows.Forms.ToolStripButton();
+            this.toolSBCut = new System.Windows.Forms.ToolStripButton();
+            this.toolSBCopy = new System.Windows.Forms.ToolStripButton();
+            this.toolSBPaste = new System.Windows.Forms.ToolStripButton();
+            this.toolSBUndo = new System.Windows.Forms.ToolStripButton();
+            this.toolSBRedo = new System.Windows.Forms.ToolStripButton();
+            this.toolSBFind = new System.Windows.Forms.ToolStripButton();
+            this.mfNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.mfOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mfSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.mfClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.meCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.mePaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.meCut = new System.Windows.Forms.ToolStripMenuItem();
+            this.meRedo = new System.Windows.Forms.ToolStripMenuItem();
+            this.meUndo = new System.Windows.Forms.ToolStripMenuItem();
+            this.msFind = new System.Windows.Forms.ToolStripMenuItem();
+            this.msFindReplace = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tbControl.SuspendLayout();
@@ -77,6 +80,7 @@
             this.mFile,
             this.mEdit,
             this.mSearch,
+            this.mWindow,
             this.mQuestion});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -96,30 +100,6 @@
             this.mFile.Size = new System.Drawing.Size(37, 20);
             this.mFile.Text = "File";
             // 
-            // mfNew
-            // 
-            this.mfNew.Image = global::NotePad.Properties.Resources._new;
-            this.mfNew.Name = "mfNew";
-            this.mfNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mfNew.Size = new System.Drawing.Size(177, 22);
-            this.mfNew.Text = "&New";
-            // 
-            // mfOpen
-            // 
-            this.mfOpen.Image = global::NotePad.Properties.Resources.open;
-            this.mfOpen.Name = "mfOpen";
-            this.mfOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.mfOpen.Size = new System.Drawing.Size(177, 22);
-            this.mfOpen.Text = "&Open";
-            // 
-            // mfSave
-            // 
-            this.mfSave.Image = global::NotePad.Properties.Resources.save;
-            this.mfSave.Name = "mfSave";
-            this.mfSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.mfSave.Size = new System.Drawing.Size(177, 22);
-            this.mfSave.Text = "&Save";
-            // 
             // mfSaveAs
             // 
             this.mfSaveAs.Name = "mfSaveAs";
@@ -128,15 +108,6 @@
             this.mfSaveAs.Size = new System.Drawing.Size(177, 22);
             this.mfSaveAs.Text = "Save As";
             this.mfSaveAs.Click += new System.EventHandler(this.sAs);
-            // 
-            // mfClose
-            // 
-            this.mfClose.Image = global::NotePad.Properties.Resources.close;
-            this.mfClose.Name = "mfClose";
-            this.mfClose.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
-            this.mfClose.Size = new System.Drawing.Size(177, 22);
-            this.mfClose.Text = "&Close";
-            this.mfClose.Click += new System.EventHandler(this.mfClose_Click);
             // 
             // mEdit
             // 
@@ -150,46 +121,6 @@
             this.mEdit.Size = new System.Drawing.Size(39, 20);
             this.mEdit.Text = "Edit";
             // 
-            // meCopy
-            // 
-            this.meCopy.Image = global::NotePad.Properties.Resources.copy;
-            this.meCopy.Name = "meCopy";
-            this.meCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.meCopy.Size = new System.Drawing.Size(144, 22);
-            this.meCopy.Text = "&Copy";
-            // 
-            // mePaste
-            // 
-            this.mePaste.Image = global::NotePad.Properties.Resources.paste;
-            this.mePaste.Name = "mePaste";
-            this.mePaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.mePaste.Size = new System.Drawing.Size(144, 22);
-            this.mePaste.Text = "&Paste";
-            // 
-            // meCut
-            // 
-            this.meCut.Image = global::NotePad.Properties.Resources.cut;
-            this.meCut.Name = "meCut";
-            this.meCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.meCut.Size = new System.Drawing.Size(144, 22);
-            this.meCut.Text = "Cu&t";
-            // 
-            // meRedo
-            // 
-            this.meRedo.Image = global::NotePad.Properties.Resources.Redo;
-            this.meRedo.Name = "meRedo";
-            this.meRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.meRedo.Size = new System.Drawing.Size(144, 22);
-            this.meRedo.Text = "&Redo";
-            // 
-            // meUndo
-            // 
-            this.meUndo.Image = global::NotePad.Properties.Resources.undo;
-            this.meUndo.Name = "meUndo";
-            this.meUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.meUndo.Size = new System.Drawing.Size(144, 22);
-            this.meUndo.Text = "&Undo";
-            // 
             // mSearch
             // 
             this.mSearch.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -198,22 +129,6 @@
             this.mSearch.Name = "mSearch";
             this.mSearch.Size = new System.Drawing.Size(54, 20);
             this.mSearch.Text = "Search";
-            // 
-            // msFind
-            // 
-            this.msFind.Image = global::NotePad.Properties.Resources.find;
-            this.msFind.Name = "msFind";
-            this.msFind.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.msFind.Size = new System.Drawing.Size(184, 22);
-            this.msFind.Text = "&Find";
-            // 
-            // msFindReplace
-            // 
-            this.msFindReplace.Image = global::NotePad.Properties.Resources.findReplace;
-            this.msFindReplace.Name = "msFindReplace";
-            this.msFindReplace.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.msFindReplace.Size = new System.Drawing.Size(184, 22);
-            this.msFindReplace.Text = "Find &Replace";
             // 
             // mQuestion
             // 
@@ -251,104 +166,20 @@
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolSBNew
-            // 
-            this.toolSBNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolSBNew.Image = global::NotePad.Properties.Resources._new;
-            this.toolSBNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolSBNew.Name = "toolSBNew";
-            this.toolSBNew.Size = new System.Drawing.Size(23, 22);
-            this.toolSBNew.Text = "toolStripButton1";
-            this.toolSBNew.Click += new System.EventHandler(this.nuevo);
-            // 
-            // toolSBSave
-            // 
-            this.toolSBSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolSBSave.Image = global::NotePad.Properties.Resources.save;
-            this.toolSBSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolSBSave.Name = "toolSBSave";
-            this.toolSBSave.Size = new System.Drawing.Size(23, 22);
-            this.toolSBSave.Text = "toolStripButton2";
-            this.toolSBSave.Click += new System.EventHandler(this.s);
-            // 
-            // toolSBOpen
-            // 
-            this.toolSBOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolSBOpen.Image = global::NotePad.Properties.Resources.open;
-            this.toolSBOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolSBOpen.Name = "toolSBOpen";
-            this.toolSBOpen.Size = new System.Drawing.Size(23, 22);
-            this.toolSBOpen.Text = "toolStripButton3";
-            this.toolSBOpen.Click += new System.EventHandler(this.abrir);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolSBCut
-            // 
-            this.toolSBCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolSBCut.Image = global::NotePad.Properties.Resources.cut;
-            this.toolSBCut.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolSBCut.Name = "toolSBCut";
-            this.toolSBCut.Size = new System.Drawing.Size(23, 22);
-            this.toolSBCut.Text = "toolStripButton4";
-            // 
-            // toolSBCopy
-            // 
-            this.toolSBCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolSBCopy.Image = global::NotePad.Properties.Resources.copy;
-            this.toolSBCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolSBCopy.Name = "toolSBCopy";
-            this.toolSBCopy.Size = new System.Drawing.Size(23, 22);
-            this.toolSBCopy.Text = "toolStripButton5";
-            // 
-            // toolSBPaste
-            // 
-            this.toolSBPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolSBPaste.Image = global::NotePad.Properties.Resources.paste;
-            this.toolSBPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolSBPaste.Name = "toolSBPaste";
-            this.toolSBPaste.Size = new System.Drawing.Size(23, 22);
-            this.toolSBPaste.Text = "toolStripButton6";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolSBUndo
-            // 
-            this.toolSBUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolSBUndo.Image = global::NotePad.Properties.Resources.undo;
-            this.toolSBUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolSBUndo.Name = "toolSBUndo";
-            this.toolSBUndo.Size = new System.Drawing.Size(23, 22);
-            this.toolSBUndo.Text = "toolStripButton7";
-            // 
-            // toolSBRedo
-            // 
-            this.toolSBRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolSBRedo.Image = global::NotePad.Properties.Resources.Redo;
-            this.toolSBRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolSBRedo.Name = "toolSBRedo";
-            this.toolSBRedo.Size = new System.Drawing.Size(23, 22);
-            this.toolSBRedo.Text = "toolStripButton8";
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolSBFind
-            // 
-            this.toolSBFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolSBFind.Image = global::NotePad.Properties.Resources.find;
-            this.toolSBFind.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolSBFind.Name = "toolSBFind";
-            this.toolSBFind.Size = new System.Drawing.Size(23, 22);
-            this.toolSBFind.Text = "toolStripButton9";
             // 
             // tbControl
             // 
@@ -404,6 +235,205 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
+            // mWindow
+            // 
+            this.mWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mwWindow,
+            this.mwTabs});
+            this.mWindow.Name = "mWindow";
+            this.mWindow.Size = new System.Drawing.Size(63, 20);
+            this.mWindow.Text = "&Window";
+            // 
+            // mwWindow
+            // 
+            this.mwWindow.Name = "mwWindow";
+            this.mwWindow.Size = new System.Drawing.Size(152, 22);
+            this.mwWindow.Text = "&Windows";
+            this.mwWindow.Click += new System.EventHandler(this.windowsToolStripMenuItem_Click);
+            // 
+            // mwTabs
+            // 
+            this.mwTabs.Checked = true;
+            this.mwTabs.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mwTabs.Enabled = false;
+            this.mwTabs.Name = "mwTabs";
+            this.mwTabs.Size = new System.Drawing.Size(152, 22);
+            this.mwTabs.Text = "&TagPages";
+            this.mwTabs.Click += new System.EventHandler(this.tagPagesToolStripMenuItem_Click);
+            // 
+            // toolSBNew
+            // 
+            this.toolSBNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBNew.Image = global::NotePad.Properties.Resources._new;
+            this.toolSBNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBNew.Name = "toolSBNew";
+            this.toolSBNew.Size = new System.Drawing.Size(23, 22);
+            this.toolSBNew.Text = "toolStripButton1";
+            this.toolSBNew.Click += new System.EventHandler(this.nuevo);
+            // 
+            // toolSBSave
+            // 
+            this.toolSBSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBSave.Image = global::NotePad.Properties.Resources.save;
+            this.toolSBSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBSave.Name = "toolSBSave";
+            this.toolSBSave.Size = new System.Drawing.Size(23, 22);
+            this.toolSBSave.Text = "toolStripButton2";
+            this.toolSBSave.Click += new System.EventHandler(this.s);
+            // 
+            // toolSBOpen
+            // 
+            this.toolSBOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBOpen.Image = global::NotePad.Properties.Resources.open;
+            this.toolSBOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBOpen.Name = "toolSBOpen";
+            this.toolSBOpen.Size = new System.Drawing.Size(23, 22);
+            this.toolSBOpen.Text = "toolStripButton3";
+            this.toolSBOpen.Click += new System.EventHandler(this.abrir);
+            // 
+            // toolSBCut
+            // 
+            this.toolSBCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBCut.Image = global::NotePad.Properties.Resources.cut;
+            this.toolSBCut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBCut.Name = "toolSBCut";
+            this.toolSBCut.Size = new System.Drawing.Size(23, 22);
+            this.toolSBCut.Text = "toolStripButton4";
+            // 
+            // toolSBCopy
+            // 
+            this.toolSBCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBCopy.Image = global::NotePad.Properties.Resources.copy;
+            this.toolSBCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBCopy.Name = "toolSBCopy";
+            this.toolSBCopy.Size = new System.Drawing.Size(23, 22);
+            this.toolSBCopy.Text = "toolStripButton5";
+            // 
+            // toolSBPaste
+            // 
+            this.toolSBPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBPaste.Image = global::NotePad.Properties.Resources.paste;
+            this.toolSBPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBPaste.Name = "toolSBPaste";
+            this.toolSBPaste.Size = new System.Drawing.Size(23, 22);
+            this.toolSBPaste.Text = "toolStripButton6";
+            // 
+            // toolSBUndo
+            // 
+            this.toolSBUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBUndo.Image = global::NotePad.Properties.Resources.undo;
+            this.toolSBUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBUndo.Name = "toolSBUndo";
+            this.toolSBUndo.Size = new System.Drawing.Size(23, 22);
+            this.toolSBUndo.Text = "toolStripButton7";
+            // 
+            // toolSBRedo
+            // 
+            this.toolSBRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBRedo.Image = global::NotePad.Properties.Resources.Redo;
+            this.toolSBRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBRedo.Name = "toolSBRedo";
+            this.toolSBRedo.Size = new System.Drawing.Size(23, 22);
+            this.toolSBRedo.Text = "toolStripButton8";
+            // 
+            // toolSBFind
+            // 
+            this.toolSBFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSBFind.Image = global::NotePad.Properties.Resources.find;
+            this.toolSBFind.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSBFind.Name = "toolSBFind";
+            this.toolSBFind.Size = new System.Drawing.Size(23, 22);
+            this.toolSBFind.Text = "toolStripButton9";
+            // 
+            // mfNew
+            // 
+            this.mfNew.Image = global::NotePad.Properties.Resources._new;
+            this.mfNew.Name = "mfNew";
+            this.mfNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.mfNew.Size = new System.Drawing.Size(177, 22);
+            this.mfNew.Text = "&New";
+            // 
+            // mfOpen
+            // 
+            this.mfOpen.Image = global::NotePad.Properties.Resources.open;
+            this.mfOpen.Name = "mfOpen";
+            this.mfOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.mfOpen.Size = new System.Drawing.Size(177, 22);
+            this.mfOpen.Text = "&Open";
+            // 
+            // mfSave
+            // 
+            this.mfSave.Image = global::NotePad.Properties.Resources.save;
+            this.mfSave.Name = "mfSave";
+            this.mfSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.mfSave.Size = new System.Drawing.Size(177, 22);
+            this.mfSave.Text = "&Save";
+            // 
+            // mfClose
+            // 
+            this.mfClose.Image = global::NotePad.Properties.Resources.close;
+            this.mfClose.Name = "mfClose";
+            this.mfClose.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
+            this.mfClose.Size = new System.Drawing.Size(177, 22);
+            this.mfClose.Text = "&Close";
+            this.mfClose.Click += new System.EventHandler(this.mfClose_Click);
+            // 
+            // meCopy
+            // 
+            this.meCopy.Image = global::NotePad.Properties.Resources.copy;
+            this.meCopy.Name = "meCopy";
+            this.meCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.meCopy.Size = new System.Drawing.Size(144, 22);
+            this.meCopy.Text = "&Copy";
+            // 
+            // mePaste
+            // 
+            this.mePaste.Image = global::NotePad.Properties.Resources.paste;
+            this.mePaste.Name = "mePaste";
+            this.mePaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.mePaste.Size = new System.Drawing.Size(144, 22);
+            this.mePaste.Text = "&Paste";
+            // 
+            // meCut
+            // 
+            this.meCut.Image = global::NotePad.Properties.Resources.cut;
+            this.meCut.Name = "meCut";
+            this.meCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.meCut.Size = new System.Drawing.Size(144, 22);
+            this.meCut.Text = "Cu&t";
+            // 
+            // meRedo
+            // 
+            this.meRedo.Image = global::NotePad.Properties.Resources.Redo;
+            this.meRedo.Name = "meRedo";
+            this.meRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.meRedo.Size = new System.Drawing.Size(144, 22);
+            this.meRedo.Text = "&Redo";
+            // 
+            // meUndo
+            // 
+            this.meUndo.Image = global::NotePad.Properties.Resources.undo;
+            this.meUndo.Name = "meUndo";
+            this.meUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.meUndo.Size = new System.Drawing.Size(144, 22);
+            this.meUndo.Text = "&Undo";
+            // 
+            // msFind
+            // 
+            this.msFind.Image = global::NotePad.Properties.Resources.find;
+            this.msFind.Name = "msFind";
+            this.msFind.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.msFind.Size = new System.Drawing.Size(184, 22);
+            this.msFind.Text = "&Find";
+            // 
+            // msFindReplace
+            // 
+            this.msFindReplace.Image = global::NotePad.Properties.Resources.findReplace;
+            this.msFindReplace.Name = "msFindReplace";
+            this.msFindReplace.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
+            this.msFindReplace.Size = new System.Drawing.Size(184, 22);
+            this.msFindReplace.Text = "Find &Replace";
+            // 
             // NotePad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -412,6 +442,7 @@
             this.Controls.Add(this.tbControl);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "NotePad";
@@ -467,6 +498,9 @@
         private System.Windows.Forms.TabPage tabPage0;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ToolStripMenuItem mWindow;
+        private System.Windows.Forms.ToolStripMenuItem mwWindow;
+        private System.Windows.Forms.ToolStripMenuItem mwTabs;
     }
 }
 
