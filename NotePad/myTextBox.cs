@@ -23,11 +23,14 @@ namespace NotePad
             this.mFile = file;
             this.Name = "file";
             this.Dock = DockStyle.Fill;
+            this.LoadFile(file.filePath, RichTextBoxStreamType.PlainText);
         }
 
         public myFile file {
             get { return mFile; }
-            set { this.mFile = value;}
+            set { this.mFile = value;
+                this.LoadFile(file.filePath, RichTextBoxStreamType.PlainText);
+            }
         }
 
         public bool isModified
@@ -38,7 +41,9 @@ namespace NotePad
 
         public String filePath {
             get { return file.filePath; }
-            set { this.file.filePath = value; }
+            set { this.file.filePath = value;
+                this.LoadFile(file.filePath, RichTextBoxStreamType.PlainText);
+            }
         }
 
         private myFile mFile;

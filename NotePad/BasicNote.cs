@@ -22,10 +22,9 @@ namespace NotePad
             mtb.file = new myFile("newdoc.txt", false);
         }
 
-        public BasicNote(myFile file)
+        public BasicNote(myTextBox mtb)
         {
             InitializeComponent();
-            myTextBox mtb = new myTextBox();
             mtb.Dock = DockStyle.Fill;
             this.Controls.Add(mtb);
 
