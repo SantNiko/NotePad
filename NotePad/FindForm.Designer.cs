@@ -109,6 +109,7 @@
             this.btnCount.TabIndex = 19;
             this.btnCount.Text = "Count";
             this.btnCount.UseVisualStyleBackColor = true;
+            this.btnCount.Click += new System.EventHandler(this.btnCount_Click);
             // 
             // btnFindNext
             // 

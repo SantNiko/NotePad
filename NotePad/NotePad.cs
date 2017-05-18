@@ -54,11 +54,11 @@ namespace NotePad
             myTextBox mtbN = new myTextBox();
             mtbN.Dock = DockStyle.Fill;
             mtbN.TextChanged += textChanged;
-
+            textos.Add(mtbN);
             if (mwTabs.Checked)
             {
                 TabPage tbN = new TabPage("NewTabPage" + nBlank);
-                textos.Add(mtbN);
+                
                 tbN.Controls.Add(mtbN);
                 tbControl.TabPages.Insert(tbControl.TabPages.Count - 1, tbN);
                 tbControl.SelectedTab = tbN;
@@ -74,18 +74,20 @@ namespace NotePad
 
         private void abrir(object sender, EventArgs e)
         {
-            
+            myTextBox mtb;
+            if (mwTabs.Checked)
+            {
+                mtb = ((myTextBox)tbControl.SelectedTab.Controls[0]);
+            }
+            else
+            {
+                mtb = ((myTextBox)this.ActiveMdiChild.Controls[0]);
+            }
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK) {
                 if (ofd.FileName != "") {
-                    if (mwTabs.Checked)
-                    {
-                        ((myTextBox)tbControl.SelectedTab.Controls[0]).filePath = ofd.FileName;
-                        this.Text = "Notepad - " + ofd.FileName;
-                    }
-                    else {
-                        ((myTextBox)this.ActiveMdiChild.Controls[0]).filePath = ofd.FileName;
-                    }
+                    mtb.filePath = ofd.FileName;
+                    mtb.LoadFile(mtb.filePath, RichTextBoxStreamType.PlainText);
                 }
             }
         }
@@ -180,7 +182,6 @@ namespace NotePad
             {
                 mtb = ((myTextBox)this.ActiveMdiChild.Controls[0]);
             }
-
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.DefaultExt = "*.txt";
             sfd.Filter = "Plain Text Files|*.txt";
@@ -188,6 +189,16 @@ namespace NotePad
             {
                 if (sfd.FileName != "")
                 {
+                    if (mwTabs.Checked)
+                    {
+                        ((myTextBox)tbControl.SelectedTab.Controls[0]).filePath = sfd.FileName;
+                    }
+                    else
+                    {
+                        ((myTextBox)this.ActiveMdiChild.Controls[0]).filePath = sfd.FileName;
+                    }
+                    mtb.SaveFile(mtb.filePath, RichTextBoxStreamType.PlainText);
+                    mtb.isModified = false;
                     return true;
                 }
                 return false;
@@ -198,19 +209,10 @@ namespace NotePad
 
         private void tbControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (tbControl.SelectedTab == tabMas)
-            //{
-            //    nuevo(null, null);
-            //}
-            //else {
-            //    if (files[tbControl.SelectedIndex].filePath != "")
-            //{
-            //    this.Text = "Notepad - " + files[tbControl.SelectedIndex].filePath;
-            //}
-            //else {
-            //    this.Text = "Notepad";
-            //}
-            //}
+            if (tbControl.SelectedTab == tabMas)
+            {
+                nuevo(null, null);
+            }
         }
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
@@ -235,7 +237,16 @@ namespace NotePad
         }
 
         public myTextBox getText() {
-            return (myTextBox)(tbControl.SelectedTab.Controls[0]);
+            myTextBox mtb;
+            if (mwTabs.Checked)
+            {
+                mtb = ((myTextBox)tbControl.SelectedTab.Controls[0]);
+            }
+            else
+            {
+                mtb = ((myTextBox)this.ActiveMdiChild.Controls[0]);
+            }
+            return mtb;
         }
 
         private void windowsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -246,8 +257,7 @@ namespace NotePad
             mwWindow.Enabled = false;
             int s = tbControl.SelectedIndex;
 
-            TabPage tb = tbControl.SelectedTab;
-            myTextBox mtb = (myTextBox)(tb.Controls[0]);
+            myTextBox mtb = textos[s];
             mtb.Dock = DockStyle.Fill;
             BasicNote newMDIChild = new BasicNote(mtb);
             if (mtb.filePath != "")
@@ -259,12 +269,11 @@ namespace NotePad
             // Display the new form.  
             newMDIChild.Show();
 
-            for (int i = 0; i < tbControl.TabCount-1; i++)
+            for (int i = 0; i < textos.Count; i++)
             {
                 if (i!=s)
                 {
-                TabPage tba = tbControl.TabPages[i];
-                myTextBox mtba = (myTextBox)(tba.Controls[0]);
+                myTextBox mtba = textos[i];
                 mtba.Dock = DockStyle.Fill;
                 BasicNote newMDIChilda = new BasicNote(mtba);
                     if (mtba.filePath != "")
@@ -290,21 +299,22 @@ namespace NotePad
             mwWindow.Checked = false;
             mwWindow.Enabled = true;
 
-            for (int i = 0; i < this.MdiChildren.Length; i++)
+
+            for (int i = 0; i < textos.Count; i++)
             {
                 TabPage tbN = new TabPage("NewTabPage" + nBlank);
                 nBlank++;
-                myTextBox mtb = ((myTextBox)((BasicNote)this.MdiChildren[0]).Controls[0]);
+                myTextBox mtb = textos[i];
                 tbN.Controls.Add(mtb);
                 tbControl.TabPages.Add(tbN);
-                this.MdiChildren[0].Dispose();
             }
-            
-                
 
-            
             tbControl.Controls.Add(this.tabMas);
             tbControl.Visible = true;
+            foreach (var item in this.MdiChildren)
+            {
+                item.Close();
+            }
         }
     }
 }

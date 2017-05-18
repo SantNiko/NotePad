@@ -15,6 +15,7 @@ namespace NotePad
         public int C_FIND = 0;
         public int C_REPLACE = 1;
 
+        myTextBox rtb;
 
         public FindForm()
         {
@@ -32,7 +33,34 @@ namespace NotePad
 
         private void btnFindNext_Click(object sender, EventArgs e)
         {
-            RichTextBox rtb = ((NotePad)this.Owner).getText();
+            rtb = ((NotePad)this.Owner).getText();
+            int startindex = 0;
+
+            if (tbFind.Text.Length > 0)
+                startindex = rtb.FindMyText(tbFind.Text.Trim(), rtb.start, rtb.Text.Length);
+
+            // If string was found in the RichTextBox, highlight it
+            if (startindex >= 0)
+            {
+                // Set the highlight color as red
+                rtb.SelectionColor = Color.Red;
+                // Find the end index. End Index = number of characters in textbox
+                int endindex = tbFind.Text.Length;
+                // Highlight the search string
+                rtb.Select(startindex, endindex);
+                // mark the start position after the position of
+                // last search string
+                rtb.start = startindex + endindex;
+            }
+        }
+
+        public void undoLast() {
+            rtb.Select(0,0);
+        }
+
+        private void btnCount_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
