@@ -191,11 +191,11 @@ namespace NotePad
                 {
                     if (mwTabs.Checked)
                     {
-                        ((myTextBox)tbControl.SelectedTab.Controls[0]).filePath = sfd.FileName;
+                        mtb.filePath = sfd.FileName;
                     }
                     else
                     {
-                        ((myTextBox)this.ActiveMdiChild.Controls[0]).filePath = sfd.FileName;
+                        mtb.filePath = sfd.FileName;
                     }
                     mtb.SaveFile(mtb.filePath, RichTextBoxStreamType.PlainText);
                     mtb.isModified = false;

@@ -12,7 +12,11 @@ namespace NotePad
     public class myTextBox : RichTextBox
     {
 
-         public int start = 0;
+        private int s;
+         public int start {
+            get { return s; }
+            set { s = value; }
+        }
         public int indexOfSearchText = 0;
 
         public myTextBox()
@@ -20,6 +24,7 @@ namespace NotePad
             this.mFile = new myFile();
             this.Name = "file";
             this.Dock = DockStyle.Fill;
+            s = 0;
         }
 
         public myTextBox(myFile file)
@@ -28,6 +33,7 @@ namespace NotePad
             this.Name = "file";
             this.Dock = DockStyle.Fill;
             this.LoadFile(file.filePath, RichTextBoxStreamType.PlainText);
+            s = 0;
         }
 
         public myFile file {
@@ -63,8 +69,8 @@ namespace NotePad
 
         public void initSearch() {
             start = 0;
-        indexOfSearchText = 0;
-    }
+            indexOfSearchText = 0;
+        }
 
         public int FindMyText(string txtToSearch, int searchStart, int searchEnd)
         {
