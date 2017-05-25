@@ -334,8 +334,10 @@ namespace NotePad
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-EN");
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-EN");
             this.Controls.Clear();
+            this.Events.Dispose();
             InitializeComponent();
             tbControl.TabPages.Clear();
+            
             for (int i = 0; i < textos.Count; i++)
             {
                 TabPage tbN = new TabPage(myManager.GetString("tabBlankTitle") + nBlank);
@@ -355,6 +357,7 @@ namespace NotePad
             Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
             this.Controls.Clear();
+            this.Events.Dispose();
             InitializeComponent();
             tbControl.TabPages.Clear();
             for (int i = 0; i < textos.Count; i++)
