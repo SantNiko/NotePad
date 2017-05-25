@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.Globalization;
 
 namespace NotePad
 {
@@ -19,6 +21,9 @@ namespace NotePad
 
         private List<myTextBox> textos;
 
+        System.Reflection.Assembly myAssembly;
+        System.Resources.ResourceManager myManager;
+
         public NotePad()
         {
             InitializeComponent();
@@ -29,11 +34,13 @@ namespace NotePad
             this.mfOpen.Click += new System.EventHandler(abrir);
             this.mfSave.Click += new System.EventHandler(s);
             this.msFind.Click += new System.EventHandler(openFind);
+            myManager = new System.Resources.ResourceManager("NotePad.Resources.strings", typeof(NotePad).Assembly);
 
         }
         
         private bool msgSave(String fichero) {
-            if (MessageBox.Show("El fichero " + fichero + " fue modificado, desea modificarlo?", "Guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            
+            if (MessageBox.Show(myManager.GetString("msgBoxFile") + fichero + myManager.GetString("msgBoxAccion"), myManager.GetString("msgBoxTitle"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 bool b = guardar(null, null);
                 return b;
@@ -57,7 +64,7 @@ namespace NotePad
             textos.Add(mtbN);
             if (mwTabs.Checked)
             {
-                TabPage tbN = new TabPage("NewTabPage" + nBlank);
+                TabPage tbN = new TabPage(myManager.GetString("tabBlankTitle") + nBlank);
                 
                 tbN.Controls.Add(mtbN);
                 tbControl.TabPages.Insert(tbControl.TabPages.Count - 1, tbN);
@@ -302,7 +309,7 @@ namespace NotePad
 
             for (int i = 0; i < textos.Count; i++)
             {
-                TabPage tbN = new TabPage("NewTabPage" + nBlank);
+                TabPage tbN = new TabPage(myManager.GetString("tabBlankTitle") + nBlank);
                 nBlank++;
                 myTextBox mtb = textos[i];
                 tbN.Controls.Add(mtb);
@@ -315,6 +322,53 @@ namespace NotePad
             {
                 item.Close();
             }
+        }
+
+        private void mEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-EN");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-EN");
+            this.Controls.Clear();
+            InitializeComponent();
+            tbControl.TabPages.Clear();
+            for (int i = 0; i < textos.Count; i++)
+            {
+                TabPage tbN = new TabPage(myManager.GetString("tabBlankTitle") + nBlank);
+                nBlank++;
+                myTextBox mtb = textos[i];
+                tbN.Controls.Add(mtb);
+                tbControl.TabPages.Add(tbN);
+            }
+            mlEnglish.Checked= true;
+            mlEnglish.Enabled = false;
+            mlSpanish.Checked = false;
+            mlSpanish.Enabled= true;
+        }
+
+        private void spanishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            this.Controls.Clear();
+            InitializeComponent();
+            tbControl.TabPages.Clear();
+            for (int i = 0; i < textos.Count; i++)
+            {
+                TabPage tbN = new TabPage(myManager.GetString("tabBlankTitle") + nBlank);
+                nBlank++;
+                myTextBox mtb = textos[i];
+                tbN.Controls.Add(mtb);
+                tbControl.TabPages.Add(tbN);
+            }
+            mlSpanish.Checked = true;
+            mlSpanish.Enabled = false;
+            mlEnglish.Checked = false;
+            mlEnglish.Enabled = true;
         }
     }
 }
